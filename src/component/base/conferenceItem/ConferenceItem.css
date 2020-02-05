@@ -1,0 +1,8 @@
+.conference-list-item {
+    color: black;
+    text-decoration: none;
+}
+
+.conference-list-item:hover {
+    background-color: #f1f1f1;
+}

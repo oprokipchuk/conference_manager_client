@@ -1,0 +1,31 @@
+.conference-details-header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.conference-details-room-header,
+.conference-details-participants-header {
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.conference-details-room-data {
+    margin-top: 20px;
+    margin-left: 110px;
+    font-size: 20px;
+}
+
+.conference-entrance-button-set {
+    margin-top: 30px;
+    margin-left: 110px;
+}
+
+.conference-entrance-button-set > button {
+    margin-right: 20px;
+}
+
+.conference-participants-list-container {
+    margin-top: 10px;
+    margin-left: 110px;
+    margin-right: 110px;
+}

@@ -9,8 +9,7 @@ export class Base extends React.Component{
     constructor(props) {
         super(props);
 
-        this.urlBase = 'http://localhost';
-        this.port = '8080';
+        this.url = 'https://conference-manager-server.herokuapp.com';
 
         this.state = {
             conferenceList: [],
@@ -24,7 +23,7 @@ export class Base extends React.Component{
     }
 
     tempLogin = () => {
-        let loginUrl = `${this.urlBase}:${this.port}/login`;
+        let loginUrl = `${this.url}/login`;
         let loginData = {
             username: 'user1@gmail.com',
             password: 'user1',
@@ -34,7 +33,7 @@ export class Base extends React.Component{
     };
 
     initUser = () => {
-        let getUserUrl = `${this.urlBase}:${this.port}/api/v1/participant`;
+        let getUserUrl = `${this.url}/api/v1/participant`;
         return axios.get(getUserUrl, {withCredentials: true})
             .catch(() => {this.props.history.push("/login")});
     };
@@ -45,7 +44,7 @@ export class Base extends React.Component{
     };
 
     loadConferenceList = () => {
-        let loadUrl = `${this.urlBase}:${this.port}/api/v1/conference`;
+        let loadUrl = `${this.url}/api/v1/conference`;
         return axios.get(loadUrl, {withCredentials: true});
     };
 

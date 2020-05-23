@@ -8,7 +8,7 @@ export class ConferenceDetails extends React.Component{
     constructor(props) {
         super(props);
 
-        this.url = 'http://localhost';
+        this.url = 'https://conference-manager-server.herokuapp.com';
 
         this.state = {
             isOwner: false,

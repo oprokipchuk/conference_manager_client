@@ -7,7 +7,7 @@ export class ConferenceCreator extends React.Component{
     constructor(props) {
         super(props);
 
-        this.url = 'https://conference-manager-server.herokuapp.com/';
+        this.url = 'https://conference-manager-server.herokuapp.com';
 
         this.state = {
             user: {},

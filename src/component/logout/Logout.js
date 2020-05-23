@@ -6,8 +6,7 @@ export class Logout extends React.Component{
     constructor(props) {
         super(props);
 
-        this.urlBase = 'http://localhost';
-        this.port = '8080';
+        this.url = 'https://conference-manager-server.herokuapp.com';
 
     }
 
@@ -16,7 +15,7 @@ export class Logout extends React.Component{
     }
 
     logout = () => {
-        let logoutUrl = `${this.urlBase}:${this.port}/logout`;
+        let logoutUrl = `${this.url}/logout`;
         axios.get(logoutUrl, {withCredentials: true})
             .then(() => {this.props.history.push("/login")});
     };

@@ -7,8 +7,7 @@ export class ConferenceCreator extends React.Component{
     constructor(props) {
         super(props);
 
-        this.urlBase = 'http://localhost';
-        this.port = '8080';
+        this.url = 'https://conference-manager-server.herokuapp.com/';
 
         this.state = {
             user: {},
@@ -23,7 +22,7 @@ export class ConferenceCreator extends React.Component{
     }
 
     tempLogin = () => {
-        let loginUrl = `${this.urlBase}:${this.port}/login`;
+        let loginUrl = `${this.url}/login`;
         let loginData = {
             username: 'user1@gmail.com',
             password: 'user1',
@@ -34,7 +33,7 @@ export class ConferenceCreator extends React.Component{
 
     initUser = () => {
         console.log("in init user");
-        let getUserUrl = `${this.urlBase}:${this.port}/api/v1/participant`;
+        let getUserUrl = `${this.url}/api/v1/participant`;
         return axios.get(getUserUrl, {withCredentials: true})
             .then((response) => this.setState({
                 user: response.data,
@@ -49,12 +48,12 @@ export class ConferenceCreator extends React.Component{
     };
 
     loadRooms = () => {
-        let getRoomsUrl = `${this.urlBase}:${this.port}/api/v1/conference_room`;
+        let getRoomsUrl = `${this.url}/api/v1/conference_room`;
         return axios.get(getRoomsUrl, {withCredentials: true});
     };
 
     onCreate = (event) => {
-        let createUrl = `${this.urlBase}:${this.port}/api/v1/conference`;
+        let createUrl = `${this.url}/api/v1/conference`;
         let creationForm = event.target.parentElement;
         let createData = {
             name: creationForm.name.value,

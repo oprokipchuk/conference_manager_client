@@ -7,8 +7,7 @@ export class AuthManager extends React.Component{
     constructor(props) {
         super(props);
 
-        this.urlBase = 'http://localhost';
-        this.port = '8080';
+        this.url = 'https://conference-manager-server.herokuapp.com';
 
         this.state = {
             loginError: false,
@@ -21,7 +20,7 @@ export class AuthManager extends React.Component{
     }
 
     loadUser = () => {
-        let getUserUrl = `${this.urlBase}:${this.port}/api/v1/participant`;
+        let getUserUrl = `${this.url}/api/v1/participant`;
         axios.get(getUserUrl, {withCredentials: true})
             .then(() => {this.props.history.push("/")});
     };
@@ -29,7 +28,7 @@ export class AuthManager extends React.Component{
     onLogin = (event) => {
         let querystring = require('querystring');
         let loginForm = event.target.parentElement;
-        let loginUrl = `${this.urlBase}:${this.port}/perform_login`;
+        let loginUrl = `${this.url}/perform_login`;
         let loginData = {
             username: loginForm.username.value,
             password: loginForm.password.value,
@@ -47,7 +46,7 @@ export class AuthManager extends React.Component{
 
     onRegister = (event) => {
         let registerForm = event.target.parentElement;
-        let registerUrl = `${this.urlBase}:${this.port}/api/v1/register`;
+        let registerUrl = `${this.url}/api/v1/register`;
         let registerData = {
             email: registerForm.username.value,
             password: registerForm.password.value,

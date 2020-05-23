@@ -8,8 +8,7 @@ export class ConferenceDetails extends React.Component{
     constructor(props) {
         super(props);
 
-        this.urlBase = 'http://localhost';
-        this.port = '8080';
+        this.url = 'http://localhost';
 
         this.state = {
             isOwner: false,
@@ -30,7 +29,7 @@ export class ConferenceDetails extends React.Component{
     }
 
     tempLogin = () => {
-        let loginUrl = `${this.urlBase}:${this.port}/login`;
+        let loginUrl = `${this.url}/login`;
         let loginData = {
             username: 'user1@gmail.com',
             password: 'user1',
@@ -41,7 +40,7 @@ export class ConferenceDetails extends React.Component{
 
     initUser = () => {
         console.log("in init user");
-        let getUserUrl = `${this.urlBase}:${this.port}/api/v1/participant`;
+        let getUserUrl = `${this.url}/api/v1/participant`;
         return axios.get(getUserUrl, {withCredentials: true})
             .then((response) => this.setState({
                 user: response.data,
@@ -60,26 +59,26 @@ export class ConferenceDetails extends React.Component{
     };
 
     loadConference = () => {
-        let loadUrl = `${this.urlBase}:${this.port}/api/v1/conference/${this.state.conferenceId}`;
+        let loadUrl = `${this.url}/api/v1/conference/${this.state.conferenceId}`;
         return axios.get(loadUrl, {withCredentials: true});
     };
 
     onLeaveClick = () => {
-        let leaveUrl = `${this.urlBase}:${this.port}/api/v1/conference/delete/${this.state.conferenceId}`;
+        let leaveUrl = `${this.url}/api/v1/conference/delete/${this.state.conferenceId}`;
         axios.put(leaveUrl,{},{withCredentials: true}).then(() => {
             this.initParams();
         })
     };
 
     onJoinClick = () => {
-        let joinUrl = `${this.urlBase}:${this.port}/api/v1/conference/add/${this.state.conferenceId}`;
+        let joinUrl = `${this.url}/api/v1/conference/add/${this.state.conferenceId}`;
         axios.put(joinUrl,{},{withCredentials: true}).then(() => {
             this.initParams();
         })
     };
 
     onDeleteConferenceClick = () => {
-        let deleteUrl = `${this.urlBase}:${this.port}/api/v1/conference/${this.state.conferenceId}`;
+        let deleteUrl = `${this.url}/api/v1/conference/${this.state.conferenceId}`;
         axios.delete(deleteUrl, {withCredentials: true}).then(() => {
             this.props.history.push("/");
         });
@@ -87,7 +86,7 @@ export class ConferenceDetails extends React.Component{
 
     onKickClick = (event, target) => {
         let kickId = event.target.parentElement.getAttribute("data-participant-id");
-        let kickUrl = `${this.urlBase}:${this.port}/api/v1/conference/delete/${this.state.conferenceId}/participant/${kickId}`;
+        let kickUrl = `${this.url}/api/v1/conference/delete/${this.state.conferenceId}/participant/${kickId}`;
         axios.put(kickUrl,{},{withCredentials: true}).then(() => {
             this.initParams();
         })
